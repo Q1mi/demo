@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package book;
+
+// 声明生成Go代码的导入路径（import path）
+option go_package = "github.com/Q1mi/demo/proto/book";
+
+message price {
+    int64 marketPrice = 1;
+    int64 salePrice = 2;
+}

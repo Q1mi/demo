@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+// 声明protobuf中的包名
+package author;
+
+// 声明生成的Go代码的导入路径
+option go_package = "github.com/Q1mi/demo/proto/author";
+
+message Info {
+    string name = 1;
+}

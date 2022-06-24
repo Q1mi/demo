@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+// 声明protobuf中的包名
+package book;
+
+// 声明生成的Go代码的导入路径
+option go_package = "github.com/Q1mi/demo/proto/book";
+
+// 引入同目录下的protobuf文件（注意起始位置为proto_path的下层）
+import "book/price.proto";
+// 引入其他目录下的protobuf文件
+import "author/author.proto";
+// 引入google/protobuf/timestamp.proto文件
+import "google/protobuf/timestamp.proto";
+// 引入google/api/annotations.proto文件
+import "google/api/annotations.proto";
+
+message book {
+    string title = 1;
+    price price = 2;
+    author.Info authorInfo = 3;  // 需要带package前缀
+    // Timestamp是大写T!大写T!大写T!
+    google.protobuf.Timestamp date = 4;  // 注意包名前缀
+}
+
+service BookService{
+    rpc Create(book)returns(book){
+        option (google.api.http) = {
+            post: "/v1/book"
+            body: "*"
+        };
+    };
+}
