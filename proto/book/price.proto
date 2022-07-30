@@ -5,7 +5,7 @@ package book;
 // 声明生成Go代码的导入路径（import path）
 option go_package = "github.com/Q1mi/demo/proto/book";
 
-message price {
-    int64 marketPrice = 1;
-    int64 salePrice = 2;
+message Price {
+    int64 market_price = 1;
+    int64 sale_price = 2;
 }
